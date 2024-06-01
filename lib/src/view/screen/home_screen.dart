@@ -7,7 +7,6 @@ import 'package:radio_news/src/view/screen/cart_screen.dart';
 import 'package:radio_news/src/view/screen/profile_screen.dart';
 import 'package:radio_news/src/controller/player_controller.dart';
 import 'package:radio_news/src/view/screen/favorite_screen.dart';
-// import 'package:radio_news/src/controller/drawer_controller.dart';
 import 'package:radio_news/src/view/widget/page_transition.dart';
 import 'package:radio_news/src/view/screen/food_list_screen.dart';
 import 'package:radio_news/src/view/screen/recording_list_screen.dart';
@@ -18,7 +17,6 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final PlayerController controller = Get.put(PlayerController());
-  // final MyDrawerController drawerController = Get.put(MyDrawerController());
 
   final List<Widget> screen = [
     const RecordingListScreen(),
@@ -55,9 +53,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Obx(
         () => PageTransition(
-          child: screen[controller.screenIndex.isNotEmpty
-              ? controller.screenIndex.first
-              : 0],
+          child: screen[controller.getScreenIndex()],
         ),
       ),
     );
