@@ -6,9 +6,9 @@ import 'package:radio_news/core/app_types.dart';
 class PlayerController extends GetxController {
   RxList<int> screenIndex = <int>[].obs;
   Rx<ThemeData> theme = AppTheme.lightTheme.obs;
-  bool isLightTheme = true;
+  RxBool isLightTheme = true.obs;
 
-// Add screen index to list, in case list is full, remove the frist and add the last one.
+  // Add screen index to list, in case list is full, remove the first and add the last one.
   void switchScreenIndex(int currentIndex) {
     const int maxUndoScreen = 5;
     const int firstElementIndex = 0;
@@ -37,10 +37,11 @@ class PlayerController extends GetxController {
   void changeTheme() {
     if (theme.value == AppTheme.darkTheme) {
       theme.value = AppTheme.lightTheme;
-      isLightTheme = true;
+      isLightTheme.value = true;
     } else {
       theme.value = AppTheme.darkTheme;
-      isLightTheme = false;
+      isLightTheme.value = false;
     }
+    update();
   }
 }

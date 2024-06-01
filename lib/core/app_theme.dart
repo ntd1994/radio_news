@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:radio_news/core/app_style.dart';
 import 'package:radio_news/core/app_color.dart';
 
 class AppTheme {
   const AppTheme._();
+
+  static final Rx<ThemeData> themeData = Rx<ThemeData>(lightTheme);
+
+  static ThemeData get currentTheme => themeData.value;
+
+  static void updateTheme(bool isLightTheme) {
+    if (isLightTheme) {
+      themeData.value = lightTheme;
+    } else {
+      themeData.value = darkTheme;
+    }
+  }
 
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: LightThemeColor.primaryLight,

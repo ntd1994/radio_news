@@ -1,9 +1,19 @@
 class Recording {
-  String publicDate;
+  String id;
+  String type;
+  String fileFormat;
+  String title;
+  int duration;
+  DateTime releaseDate;
   String recordingUrl;
 
   Recording(
-    this.publicDate,
+    this.id,
+    this.type,
+    this.fileFormat,
+    this.title,
+    this.duration,
+    this.releaseDate,
     this.recordingUrl,
   );
 }
